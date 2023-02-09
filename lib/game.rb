@@ -1,13 +1,13 @@
+require_relative "display.rb"
+
 class Game
    
-    attr_reader :word, :max_tries, :saved_game, :correct_guess_array, :current_tries
+    attr_reader :word, :max_tries, :saved_game, :correct_guess_array, :current_tries, :attempts_array
 
     def initialize
         @max_tries = 12
         @current_tries = 0
         @saved_game = false
-        @win_check = false
-        @lose_check = false
         @game_on = true
         @word = ""
         @correct_guess_array= []
@@ -67,9 +67,11 @@ class Game
             puts "You have already picked this one!"
         else
             if @word.include?(letter)
+                Display.right_guess
                 @attempts_array.push(letter)
                 fill_correct_guess_array(letter)
             else
+                Display.wrong_guess
                 @attempts_array.push(letter)
                 @current_tries += 1
             end

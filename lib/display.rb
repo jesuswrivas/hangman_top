@@ -11,15 +11,22 @@ class Display
          puts "You have #{number} oportunities left..."
     end
 
-    def right_guess
+    def Display.right_guess
         puts "Good guess!".green
     end
 
-    def wrong_guess
+    def Display.wrong_guess
         puts "Incorrect!, try again...".red
     end
 
+    def show_guesses (array)
+        puts " "
+        print "Letters guessed: "
+        array.each {|letter| print "#{letter} "}
+        puts " "
+        puts " "
 
+    end
 
     def show_board (word, result_array)
         
@@ -40,6 +47,7 @@ class Display
 
 
     def welcome_screen
+        system("clear")
         puts "Welcome to the Hangman game...."
         puts " "
        
@@ -55,10 +63,22 @@ class Display
             puts "Make your guess!"
             user_guess = gets.chomp.downcase
         end
-        "ab"
+        
         return user_guess
     end
 
+    def Display.winning_message
+        puts " "
+        puts "Congratulations, you won the game!"
+
+    end
+
+    def Display.losing_message
+        puts " "
+        puts "No attempts left, you lose!"
+    end
+
+    
 
 
 
