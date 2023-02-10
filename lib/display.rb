@@ -78,6 +78,30 @@ class Display
         puts "No attempts left, you lose!"
     end
 
+
+    def play_again?
+        puts " "
+        puts "Wanna play again?  (Y/N)"
+        word = gets.chomp.downcase
+
+        while word != "y" and word != "n"
+            puts "Sorry, I didnt understand."
+            puts "Wanna play again? (Y/N)"
+            word = gets.chomp.downcase
+        end
+
+        return word
+              
+
+    end
+
+    def Display.thank_you_message
+        puts " "
+        puts "Thank you for playing with us..."
+        puts "Until next time!"
+    end
+
+
     
 
 

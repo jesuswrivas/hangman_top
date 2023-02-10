@@ -1,7 +1,7 @@
 require_relative "display.rb"
 
 class Game
-   
+    attr_accessor :game_on
     attr_reader :word, :max_tries, :saved_game, :correct_guess_array, :current_tries, :attempts_array
 
     def initialize
@@ -88,6 +88,16 @@ class Game
     def check_lose
        @current_tries == @max_tries 
        
+    end
+
+    def reset
+        @max_tries = 12
+        @current_tries = 0
+        @saved_game = false
+        @game_on = true
+        @word = ""
+        @correct_guess_array= []
+        @attempts_array = []
     end
 
   
