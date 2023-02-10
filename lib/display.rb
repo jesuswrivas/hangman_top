@@ -53,15 +53,25 @@ class Display
        
     end
 
+#Take user guess, also includes the save game and the exit option
+#If the user writes save, the game will be saved.
+#If the user writes exit, the game will be over.
 
     def take_user_guess
-        puts "Make your guess! Enter just a single letter"
+        puts "Make your guess! Enter just a single letter. Or enter save to sate the game!"
         user_guess = gets.chomp.downcase
         
+        if user_guess == "save" || user_guess == "exit"
+            return user_guess
+        end
+      
         while ("a".."z").cover?(user_guess) == false  || user_guess.length != 1
             puts "Sorry I didnt understand...Remember enter only a letter"
-            puts "Make your guess!"
+            puts "Make your guess! or type save to save the game!"
             user_guess = gets.chomp.downcase
+            if user_guess == "save" || user_guess == "exit"
+                break
+            end
         end
         
         return user_guess

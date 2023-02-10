@@ -1,3 +1,4 @@
+require "psych"
 require_relative "display.rb"
 
 class Game
@@ -100,6 +101,15 @@ class Game
         @attempts_array = []
     end
 
-  
+
+    def save_game
+        File.open("../saved_games.txt","w") do |file| 
+            file.write(Psych.dump(self))       
+         end
+    end
+
+    
+
+    
 end
 
