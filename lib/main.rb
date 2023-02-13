@@ -1,17 +1,32 @@
 require_relative "display.rb"
 require_relative "game.rb"
 
-
-#Initializing Game
-newGame = Game.new
-newDisplay = Display.new
+game_on = true
 
 #Game loop. It will leave when the player wins or loses and refuses to play again
-while newGame.game_on
-    newGame.reset
-    newGame.get_random_word
+while game_on
+
+    #Initializing Game
+    Display.welcome_message
+    newDisplay = Display.new
+    #New game or load game?
    
-    newDisplay.welcome_screen
+    new_or_load = Display.new_or_load_game
+
+    if new_or_load == "1"
+        newGame = Game.new
+
+    else
+        open_file = File.open("../saved_games.txt","r")
+        open_file.rewind
+        newGame =  Psych.load(open_file.read,permitted_classes: [Game])
+        open_file.close
+        newGame.saved_game = true    
+    end
+
+    system("clear")
+
+    newGame.saved_game == true ? Display.load_game_started : Display.new_game_started 
 
     newDisplay.show_board(newGame.word,newGame.correct_guess_array)
     
@@ -46,16 +61,13 @@ while newGame.game_on
 
     #Asking the player to play again
     player_choice = newDisplay.play_again?
-    player_choice == "y" ? newGame.game_on = true : newGame.game_on = false
+    game_on = true
+    player_choice == "y" ? newGame.reset : game_on = false
 
 end
 
 Display.thank_you_message
 
-
-#Need to find a way to load the game and resume it
-#Im thinking in making a class of Hangmang game, for a standard game we will create
-#the object but for a "load game" we will read the saved one and start from there
 
 
 

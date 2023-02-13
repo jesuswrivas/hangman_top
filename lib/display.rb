@@ -2,7 +2,39 @@ require "colorize"
 
 class Display
 
-    def initialize
+    def Display.welcome_message
+        system("clear")
+        puts "WELCOME TO THE HANGMAN GAME"
+        puts " "
+        puts "The rules are simple,"
+        puts "A random world is generated and you have to guess it!"
+        puts "You have 12 attempts... use them wisely."
+        puts " "
+        puts "You can save at anytime writng 'save' or exit anytime with 'exit'"
+
+    end
+
+    def Display.new_game_started
+       puts "A NEW GAME HAS STARTED".green
+    
+    end
+
+    def Display.load_game_started
+        puts "A LOADED GAME HAS STARTED".green
+    end
+
+    def Display.new_or_load_game
+        puts " "
+        puts "Enter 1 to start a new game. Enter 2 to load a new one"
+        word = gets.chomp
+
+        while word != "1" and word != "2"
+            puts "Sorry, I didnt understand."
+            puts "Enter 1 to start a new game. Enter 2 to load a new one"
+            word = gets.chomp
+        end
+
+        return word
 
     end
 
@@ -46,19 +78,12 @@ class Display
     end
 
 
-    def welcome_screen
-        system("clear")
-        puts "Welcome to the Hangman game...."
-        puts " "
-       
-    end
-
-#Take user guess, also includes the save game and the exit option
+ #Take user guess, also includes the save game and the exit option
 #If the user writes save, the game will be saved.
 #If the user writes exit, the game will be over.
 
     def take_user_guess
-        puts "Make your guess! Enter just a single letter. Or enter save to save the game!"
+        puts "Make your guess! Enter just a single letter. Or type you can type 'save' or 'exit' the game!"
         user_guess = gets.chomp.downcase
         
         if user_guess == "save" || user_guess == "exit"

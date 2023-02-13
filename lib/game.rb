@@ -2,18 +2,19 @@ require "psych"
 require_relative "display.rb"
 
 class Game
-    attr_accessor :game_on
+    attr_accessor :saved_game
     attr_reader :word, :max_tries, :saved_game, :correct_guess_array, :current_tries, :attempts_array
 
     def initialize
         @max_tries = 12
         @current_tries = 0
         @saved_game = false
-        @game_on = true
+        
         @word = ""
         @correct_guess_array= []
         @attempts_array = []
-        
+        #Every game class starts with a random word already
+        get_random_word
     end
 
 
@@ -60,7 +61,6 @@ class Game
         end
 
     end
-
     
 
     def make_guess (letter)
@@ -80,7 +80,6 @@ class Game
     end
 
 
-
     def check_win
         @correct_guess_array.uniq.min == 1 
             
@@ -96,11 +95,9 @@ class Game
         @current_tries = 0
         @saved_game = false
         @game_on = true
-        @word = ""
-        @correct_guess_array= []
         @attempts_array = []
+        get_random_word
     end
-
 
     def save_game
        
@@ -110,7 +107,12 @@ class Game
     end
 
     
-
-    
+    def Game.load_game
+        open_file = File.open("../saved_games.txt","r")
+        open_file.rewind
+        loaded_class =  Psych.load(open_file.read,permitted_classes: [Game])
+        open_file.close        
+    end
+        
 end
 
