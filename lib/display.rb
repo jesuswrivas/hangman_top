@@ -58,7 +58,7 @@ class Display
 #If the user writes exit, the game will be over.
 
     def take_user_guess
-        puts "Make your guess! Enter just a single letter. Or enter save to sate the game!"
+        puts "Make your guess! Enter just a single letter. Or enter save to save the game!"
         user_guess = gets.chomp.downcase
         
         if user_guess == "save" || user_guess == "exit"
@@ -111,8 +111,24 @@ class Display
         puts "Until next time!"
     end
 
+    def Display.saved_message
+        puts " "
+        puts "The game has been saved".green
+        puts " "
+    end
 
-    
+    def Display.exit_game
+        puts " "
+        puts "Exiting current game...".red
+        puts " "
+    end
+
+    def Display.prompt_division
+        puts " "
+        puts "------------------------------------------------------------"
+        puts " "
+
+    end
 
 
 

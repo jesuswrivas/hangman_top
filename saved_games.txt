@@ -1,0 +1,25 @@
+--- !ruby/object:Game
+max_tries: 12
+current_tries: 7
+saved_game: false
+game_on: true
+word: gloves
+correct_guess_array:
+- 0
+- 1
+- 1
+- 0
+- 1
+- 1
+attempts_array:
+- a
+- e
+- i
+- o
+- u
+- z
+- s
+- d
+- m
+- "n"
+- l

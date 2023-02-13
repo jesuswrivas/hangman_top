@@ -103,6 +103,7 @@ class Game
 
 
     def save_game
+       
         File.open("../saved_games.txt","w") do |file| 
             file.write(Psych.dump(self))       
          end
