@@ -2,13 +2,14 @@ require "colorize"
 
 class Display
 
+
     def Display.welcome_message
         system("clear")
         puts "WELCOME TO THE HANGMAN GAME"
         puts " "
         puts "The rules are simple,"
         puts "A random world is generated and you have to guess it!"
-        puts "You have 12 attempts... use them wisely."
+        puts "You have 10 attempts... use them wisely."
         puts " "
         puts "You can save at anytime writng 'save' or exit anytime with 'exit'"
 

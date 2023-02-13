@@ -6,7 +6,7 @@ class Game
     attr_reader :word, :max_tries, :saved_game, :correct_guess_array, :current_tries, :attempts_array
 
     def initialize
-        @max_tries = 12
+        @max_tries = 10
         @current_tries = 0
         @saved_game = false
         
