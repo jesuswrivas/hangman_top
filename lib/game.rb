@@ -25,7 +25,7 @@ class Game
     #using the gets method.
 
         word_check = false
-        dictionary_file = File.open("../google-10000-english-no-swears.txt","r")
+        dictionary_file = File.open("google-10000-english-no-swears.txt","r")
 
         while word_check == false
             #We need a random number between 1 and 9894. 

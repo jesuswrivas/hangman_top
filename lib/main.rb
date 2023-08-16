@@ -17,7 +17,7 @@ while game_on
         newGame = Game.new
 
     else
-        open_file = File.open("../saved_games.txt","r")
+        open_file = File.open("saved_games.txt","r")
         open_file.rewind
         newGame =  Psych.load(open_file.read,permitted_classes: [Game])
         open_file.close
